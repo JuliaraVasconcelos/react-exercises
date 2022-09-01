@@ -5,14 +5,16 @@ import reportWebVitals from './reportWebVitals';
 import MuiThemes from './Utils/Commom/MuiThemes';
 import HomeController from './Screens/Home/HomeController';
 import LoginController from './Screens/Login/LoginController';
+import TrafficController from './Screens/Traffic Light/TrafficController'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <MuiThemes>
-      <LoginController />
+      {/* <TrafficController /> */}
       {/* <HomeController /> */}
+      <LoginController />
     </MuiThemes>
   </React.StrictMode>,
   document.getElementById('root')

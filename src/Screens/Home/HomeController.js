@@ -1,63 +1,109 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import HomeView from "./HomeView";
 
-class HomeController extends React.Component {
-    constructor(props) {
-        super(props);
+const HomeController = () => {
 
-        //gerando logs da props
-        console.log(" Chamando constructor() ");
-        console.log(props);
+    const [count, setCount] = useState(0);
+    const [status, setStatus] = useState('parado')
 
-        this.state = {
-            count: 0,
-            status: "Parado"
-        }; //inicializando o state
-    }
 
-    componentDidMount() {
-        console.log(" Chamando componentDidMount ");
-        //Inicializando o timeout
-        this.interval = setInterval(() => {
+    // useEffect(() => {
+        // const interval = setInterval(() => {
+            //atualizando o contador
+            // console.log(" Atualizando a classe ");
+            // if (status === "Rodando") {
+                // setCount((count) => count + 1)
+            // }
+        // }, 1000);
+        // return () => {
+            // clearInterval(interval)
+        // };
+    // }, [])
+    //mais usado
+    // useEffect(() => {
+        //Componente Did Mount
+        // console.log("Montar o Componente");
+        //Antes de chamar a API
+        //Quando eu listar o interval
+        //Buscar o BD 
+        // const interval = setInterval(() => {
+            //atualizando o contador
+            // console.log(" Atualizando a classe ");
+            // this.setState({
+            //   count: this.state.count + 1,
+            // });
+        //     setCount((count) => count + 1);
+        // }, 1000);
+        // return () => {
+            //ComponentWillUnmount
+            // console.log("Desmontar o componente");
+            //Limpar o interval
+            //Fechar a conexao com o banco
+            //Cancelar uma conexao
+    //         clearInterval(interval)
+    //     };
+    // }, [])
+
+    // useEffect(() => {
+    //     console.log('antes de alterar a info depois do render');
+    //     return () => {
+    //         console.log('antes de alterar info antes do render');
+    //     }
+    // }, [count])
+
+
+        
+    // componentDidMount() {
+    //     console.log(" Chamando componentDidMount ");
+    //     //Inicializando o timeout
+    //     this.interval = setInterval(() => {
+    //         //atualizando o contador
+    //         console.log(" Atualizando a classe ");
+    //         if (this.state.status === "Rodando") {
+    //             this.setState({
+    //                 count: this.state.count + 1,
+    //             });
+    //         }
+    //     }, 1000);
+    // }
+    //-----------------[ReactHook]----------------------------
+    useEffect(() => {
+        const interval = setInterval(() => {
             //atualizando o contador
             console.log(" Atualizando a classe ");
-            if (this.state.status === "Rodando") {
-                this.setState({
-                    count: this.state.count + 1,
-                });
+            if (status === "Rodando") {
+                setCount((count) => count + 1)
             }
         }, 1000);
-    }
+        return () => {
+            clearInterval(interval)
+        };
+    }, [])
 
-    iniciar = () => {
-        this.setState({
-            status: "Rodando"
-        })
+    const iniciar = () => {
+        setStatus('rodando')
     }
-    pausar = () => {
-        this.setState({
-            status: "Pausado"
-        })
+    const pausar = () => {
+        setStatus('pausado')
     }
-    parar = () => {
-        this.setState({
-            status: "Parado"
-        })
+    const parar = () => {
+        setStatus('parado')
     }
-    zerar = () => {
-        this.setState({
-            count: 0
-        })
+    const zerar = () => {
+        setCount(0)
     }
-
-
-    render() {
-        console.log(" Chamando Render " + this.state.count);
+    //     console.log(" Chamando Render " + this.state.count);
+    // const onClickButton = () => {
+    //     setCount((count) => count + 1)
+    // }
         return (
             //Chamando o View e passando o props count_info
-            <HomeView count={this.state.count} status={this.state.status}
-                iniciar={this.iniciar} pausar={this.pausar} parar={this.parar} zerar={this.zerar} />
+            <HomeView 
+            // count={count} onClickButton={onClickButton}
+            count={count} status={status}
+                iniciar={iniciar} pausar={pausar} parar={parar} zerar={zerar}
+                 />
         );
     }
-}
+
 export default HomeController;

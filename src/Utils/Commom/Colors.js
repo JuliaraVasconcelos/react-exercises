@@ -1,32 +1,32 @@
 const colors = {
     White: "#ffffff",
-    PrimaryDark: "#C35403",
-    PrimaryMedium: "#E16206",
-    PrimaryLight: "#F87C23",
-    PrimaryLightest: "#F87C23",
+    PrimaryDark: "#481C95",
+    PrimaryMedium: "#712FE5",
+    PrimaryLight: "#B88DFB",
+    PrimaryLightest: "#F6F0FF",
 
-    SecondaryDark: "#688C38",
-    SecondaryMedium: "#86B34A",
-    SecondaryLight: "#9ED259",
-    SecondaryLightest: "#BAF172",
+    SecondaryDark: "#1B7E95",
+    SecondaryMedium: "#29C1E5",
+    SecondaryLight: "#8CE6FC",
+    SecondaryLightest: "#E0F9FF",
 
     TertiaryDark: "#AB3552",
     TertiaryMedium: "#D84267",
     TertiaryLight: "#E65A7C",
     TertiaryLightest: "#FD7A9A",
 
-    NeutralDark: "#39322E",
-    NeutralMedium: "#9C8F8F",
-    NeutralLight: "#FFF5F1",
-    NeutralLightest: "#FFFFFF",
+    NeutralDark: "#5656DC",
+    NeutralMedium: "#8888E7",
+    NeutralLight: "#BBBBF1",
+    NeutralLightest: "#EEEEFC",
 
-    Neutral: "#39322E",
+    Neutral: "#F5F5F5",
     Warning: "#C35403",
     Report: "#E16206",
     Error: "#F87C23",
     Success: "#508110",
 
-    BackgroundDisabled: "#E1D9D9",
+    BackgroundDisabled: "#F6F0FF",
 };
 
 export default colors;

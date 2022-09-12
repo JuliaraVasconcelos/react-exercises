@@ -4,17 +4,18 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import MuiThemes from './Utils/Commom/MuiThemes';
 import HomeController from './Screens/Home/HomeController';
-import LoginController from './Screens/Login/LoginController';
-import TrafficController from './Screens/Traffic Light/TrafficController'
+import { BrowserRouter } from "react-router-dom";
+import Routes from './Routes/RouteController';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <MuiThemes>
-      {/* <TrafficController /> */}
-      {/* <HomeController /> */}
-      <LoginController />
+      {/* <BrowserRouter>
+        <Routes />
+      </BrowserRouter> */}
+      <HomeController/>
     </MuiThemes>
   </React.StrictMode>,
   document.getElementById('root')

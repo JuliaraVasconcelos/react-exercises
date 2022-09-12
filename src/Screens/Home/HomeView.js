@@ -1,39 +1,87 @@
 
 import * as React from "react";
-import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Youtube from "../../Components/InnerComponent/Youtube";
+import Twitch from "../../Components/InnerComponent/Twitch";
+import Instagram from "../../Components/InnerComponent/Instagram";
+import TikTok from "../../Components/InnerComponent/TikTok";
+import Parcerias from "../../Components/InnerComponent/Parcerias";
 
-export default function HomeView({ count, onClickButton }) {
+export default function HomeView({ handleChange, value, a11yProps }) {
 
+    function TabPanel(props) {
+        const { children, value, index, ...other } = props;
 
-    // let buttons = null
+        return (
+            <div
+                role="tabpanel"
+                hidden={value !== index}
+                id={`simple-tabpanel-${index}`}
+                aria-labelledby={`simple-tab-${index}`}
+                {...other}
+            >
+                {value === index && (
+                    <Box sx={{ p: 3 }}>
+                        <Typography>{children}</Typography>
+                    </Box>
+                )}
+            </div>
+        );
+    }
 
-    // if (status === "Rodando") {
-    //     buttons = (
-    //         <>
-    //             <Button variant={"primary"} onClick={pausar}>Pausar</Button>
-    //             <Button variant={"primary"} onClick={parar}>Parar</Button>
-    //             <Button variant={"primary"} onClick={zerar}>Zerar</Button>
-    //         </>
-    //     );
-    // } else if (status === "Parado") {
-    //     buttons = (
-    //         <>
-    //             <Button variant={"primary"} onClick={iniciar}>Iniciar</Button>
-    //         </>
-    //     );
-    // } else {
-    //     buttons = (
-    //         <>
-    //             <Button variant={"primary"} onClick={iniciar}>Re-Iniciar</Button>
-    //         </>
-    //     );
-    // }
+    TabPanel.propTypes = {
+        children: PropTypes.node,
+        index: PropTypes.number.isRequired,
+        value: PropTypes.number.isRequired,
+    };
+
+    function a11yProps(index) {
+        return {
+            id: `simple-tab-${index}`,
+            'aria-controls': `simple-tabpanel-${index}`,
+        };
+    }
+    
     return (
-        <Container maxWidth="xl">
-            <Typography variant="h1">Contador = {count} </Typography>
-            <Button onClick={onClickButton}>Clique aqui</Button>
-        </Container>
+        
+        <div>
+            <Box sx={{ width: '100%' }}>
+                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                    <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                        <Tab label="Youtube" {...a11yProps(0)} />
+                        <Tab label="Twitch" {...a11yProps(1)} />
+                        <Tab label="TikTok" {...a11yProps(2)} />
+                        <Tab label="Instagram" {...a11yProps(3)} />
+                        <Tab label="Parcerias" {...a11yProps(4)} />
+                    </Tabs>
+                </Box>
+                <TabPanel value={value} index={0}>
+                    <Youtube />
+                </TabPanel>
+                <TabPanel value={value} index={1}>
+                    <Twitch />
+                </TabPanel>
+                <TabPanel value={value} index={2}>
+                    <TikTok />
+                </TabPanel>
+                <TabPanel value={value} index={3}>
+                    <Instagram />
+                </TabPanel>
+                <TabPanel value={value} index={4}>
+                    <Parcerias />
+                </TabPanel>
+            </Box>
+        </div>
     );
 }

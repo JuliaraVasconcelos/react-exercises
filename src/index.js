@@ -1,23 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
-import MuiThemes from './Utils/Commom/MuiThemes';
-import HomeController from './Screens/Home/HomeController';
-import LoginController from './Screens/Login/LoginController';
-import TrafficController from './Screens/Traffic Light/TrafficController'
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import MuiThemes from "./Utils/Common/MuiThemes";
+import { BrowserRouter } from "react-router-dom";
+import Routes from "./Routes/RouteController";
+import { InfoContextProvider } from "./Store/InfoContext";
 
-
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
   <React.StrictMode>
     <MuiThemes>
-      {/* <TrafficController /> */}
-      {/* <HomeController /> */}
-      <LoginController />
+      <BrowserRouter>
+        <InfoContextProvider>
+          <Routes />
+        </InfoContextProvider>
+      </BrowserRouter>
     </MuiThemes>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

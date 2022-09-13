@@ -6,14 +6,12 @@ const LoginController =() => {
     const [isLoading, setIsLoading] = useState(false)
 
     const onClickButton = () => {
+        console.log('carregando')
         setIsLoading(current => !current)
     }
-    useEffect(() => {
-        console.log('isLoading is:', isLoading);
-    },[isLoading])
 
     return (
-        <LoginView isLoading={isLoading} onCLickButton={onClickButton} />
+        <LoginView isLoading={isLoading} onClickButton={onClickButton} />
     )
 }
 

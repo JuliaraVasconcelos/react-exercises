@@ -1,109 +1,37 @@
-import React, { useState, useEffect } from "react";
-import HomeView from "./HomeView";
+import React, { useEffect, useRef, useContext } from 'react';
+import useAPI from '../../Services/APIs/Common/useAPI';
+import toys from '../../Services/APIs/Toys/toys';
+import HomeView from './HomeView';
+import { useNavigate } from "react-router-dom";
+import { InfoContext } from "../../Store/InfoContext";
 
 const HomeController = () => {
 
-    const [count, setCount] = useState(0);
-    const [status, setStatus] = useState('parado')
+    const getToysGetAPI = useAPI(toys.getAllToys);
+    const navigate = useNavigate();
+    const userCoordinates = useRef(null);
+    const context = useContext(InfoContext);
+
+    console.log(context);
 
 
-    // useEffect(() => {
-        // const interval = setInterval(() => {
-            //atualizando o contador
-            // console.log(" Atualizando a classe ");
-            // if (status === "Rodando") {
-                // setCount((count) => count + 1)
-            // }
-        // }, 1000);
-        // return () => {
-            // clearInterval(interval)
-        // };
-    // }, [])
-    //mais usado
-    // useEffect(() => {
-        //Componente Did Mount
-        // console.log("Montar o Componente");
-        //Antes de chamar a API
-        //Quando eu listar o interval
-        //Buscar o BD 
-        // const interval = setInterval(() => {
-            //atualizando o contador
-            // console.log(" Atualizando a classe ");
-            // this.setState({
-            //   count: this.state.count + 1,
-            // });
-        //     setCount((count) => count + 1);
-        // }, 1000);
-        // return () => {
-            //ComponentWillUnmount
-            // console.log("Desmontar o componente");
-            //Limpar o interval
-            //Fechar a conexao com o banco
-            //Cancelar uma conexao
-    //         clearInterval(interval)
-    //     };
-    // }, [])
-
-    // useEffect(() => {
-    //     console.log('antes de alterar a info depois do render');
-    //     return () => {
-    //         console.log('antes de alterar info antes do render');
-    //     }
-    // }, [count])
-
-
-        
-    // componentDidMount() {
-    //     console.log(" Chamando componentDidMount ");
-    //     //Inicializando o timeout
-    //     this.interval = setInterval(() => {
-    //         //atualizando o contador
-    //         console.log(" Atualizando a classe ");
-    //         if (this.state.status === "Rodando") {
-    //             this.setState({
-    //                 count: this.state.count + 1,
-    //             });
-    //         }
-    //     }, 1000);
-    // }
-    //-----------------[ReactHook]----------------------------
     useEffect(() => {
-        const interval = setInterval(() => {
-            //atualizando o contador
-            console.log(" Atualizando a classe ");
-            if (status === "Rodando") {
-                setCount((count) => count + 1)
+        getToysGetAPI.request(1);
+    }, []);
+
+    console.log(userCoordinates);
+    const goToPage = (toy) => {
+
+        navigate("/detail/" + toy._id, {
+            state: {
+                toy: JSON.stringify(toy),
+                latitude: userCoordinates.current ? userCoordinates.current.latitude : 0,
+                longitude: userCoordinates.current ? userCoordinates.current.longitude : 0
             }
-        }, 1000);
-        return () => {
-            clearInterval(interval)
-        };
-    }, [])
-
-    const iniciar = () => {
-        setStatus('rodando')
-    }
-    const pausar = () => {
-        setStatus('pausado')
-    }
-    const parar = () => {
-        setStatus('parado')
-    }
-    const zerar = () => {
-        setCount(0)
-    }
-    //     console.log(" Chamando Render " + this.state.count);
-    // const onClickButton = () => {
-    //     setCount((count) => count + 1)
-    // }
-        return (
-            //Chamando o View e passando o props count_info
-            <HomeView 
-            // count={count} onClickButton={onClickButton}
-            count={count} status={status}
-                iniciar={iniciar} pausar={pausar} parar={parar} zerar={zerar}
-                 />
-        );
+        })
     }
 
+    console.log(getToysGetAPI.data)
+    return <HomeView arrayToys={getToysGetAPI.data} loading={getToysGetAPI.loading} goToPage={goToPage} info={context.info} />
+}
 export default HomeController;

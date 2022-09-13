@@ -18,7 +18,7 @@ const LoginView = ({ isLoading, onClickButton }) => {
 
     let button = (<Button variant='primary' onClick={onClickButton} >Entrar</Button>);
     if (isLoading) {
-         button = isLoading && (<CircularProgress size={25} className="circularProgress" />)
+        button = (<CircularProgress size={25} className="circularProgress" />)
     }
 
     return (

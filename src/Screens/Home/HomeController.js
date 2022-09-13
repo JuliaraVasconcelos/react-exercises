@@ -7,12 +7,21 @@ import { InfoContext } from "../../Store/InfoContext";
 
 const HomeController = () => {
 
+
     const getToysGetAPI = useAPI(toys.getAllToys);
     const navigate = useNavigate();
     const userCoordinates = useRef(null);
     const context = useContext(InfoContext);
 
     console.log(context);
+
+    const [alignment, setAlignment] = React.useState('web');
+    const [value, setValue] = React.useState(0);
+
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
 
 
     useEffect(() => {
@@ -29,6 +38,14 @@ const HomeController = () => {
                 longitude: userCoordinates.current ? userCoordinates.current.longitude : 0
             }
         })
+
+        return (
+            <HomeView 
+            handleChange={handleChange}
+            value={value}
+                 />
+        );
+
     }
 
     console.log(getToysGetAPI.data)

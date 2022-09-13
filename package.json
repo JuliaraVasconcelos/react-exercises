@@ -9,7 +9,12 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/icons-material": "^5.10.2",
+<<<<<<< HEAD
     "@mui/material": "^5.10.5",
+=======
+    "@mui/lab": "^5.0.0-alpha.98",
+    "@mui/material": "^5.10.4",
+>>>>>>> 2b5a94ed2fef609fa39e64d1bd1032fd32ac7c6d
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",

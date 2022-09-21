@@ -1,12 +1,12 @@
 import { Typography } from "@mui/material";
 import React from "react";
-import "../CustomInput/CustomInput.css";
+import "./CustomInput.css";
 import { styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-import Sizes from "../../Utils/Commom/Sizes";
-import Colors from "../../Utils/Commom/Colors";
+import Sizes from "../../Utils/Common/Sizes";
+import Colors from "../../Utils/Common/Colors";
 
 const BootstrapInput = styled(InputBase)(({ theme, error }) => {
     let borderNormal = "1px solid " + Colors.NeutralMedium;

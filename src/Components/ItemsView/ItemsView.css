@@ -1,0 +1,14 @@
+.itemClass {
+    text-align: center;
+    cursor: pointer;
+}
+
+.cardClass {
+    max-width: 345px !important;
+    border-radius: 20px !important;
+}
+
+.titleCard {
+    font-weight: bold !important;
+    min-height: 40px;
+}

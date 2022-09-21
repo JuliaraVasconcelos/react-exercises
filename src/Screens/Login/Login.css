@@ -1,0 +1,66 @@
+#root {
+    height: 100%;
+}
+
+.gridClass {
+    height: 100%;
+}
+
+.boxImg {
+    text-align: center;
+}
+
+@media screen and (min-width: 100px) {
+    .boxLogin {
+        width: 200px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .boxLogin {
+        width: 300px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .boxLogin {
+        width: 400px;
+    }
+}
+
+
+.childrenImg {
+    text-align: center;
+}
+
+.logo {
+    margin-bottom: 15px;
+}
+
+.boxProgress {
+    text-align: center;
+}
+
+.circularProgress {
+    height: 20px;
+}
+
+.infoErrorMessage {
+    text-align: center;
+}
+
+.buttonGoogleDiv {
+    text-align: center;
+}
+
+.boxButton {
+    text-align: center;
+}
+
+.MuiFormControl-root {
+    width: 100%;
+}
+
+.circularProgress {
+    margin-top: 15px;
+}

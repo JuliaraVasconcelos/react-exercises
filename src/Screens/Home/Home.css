@@ -1,17 +1,11 @@
-.App {
-    text-align: center;
-    font-size: 36px;
-    color: #ed145b
+.titlePage {
+    text-align: left;
 }
 
-.boxGreen {
-    background-color: aquamarine;
-    width: 100px;
-    height: 100px;
+.titleButton {
+    text-align: right;
 }
 
-.boxRed {
-    background-color: red;
-    width: 100px;
-    height: 100px;
+.buttonClass {
+    width: 220px !important;
 }

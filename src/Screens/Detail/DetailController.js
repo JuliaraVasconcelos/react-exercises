@@ -7,6 +7,8 @@ const DetailController = () => {
     const {
         state: { toy },
     } = useLocation();
+    // const info = useLocation();
+    //   const toy = info.state.toy;  
 
     const toyInfo = JSON.parse(toy);
     let navigate = useNavigate();

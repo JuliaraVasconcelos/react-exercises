@@ -1,0 +1,21 @@
+.boxCustomInput {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.labelCustomInput {
+    margin-bottom: 5px !important;
+}
+
+.labelMessageCustomInput {
+    margin-top: 5px !important;
+}
+
+.testLabel {
+    color: blue;
+}
+
+.boxCustomSelect .MuiInputLabel-root {
+    color: #39322E;
+    margin-left: -13px;
+}

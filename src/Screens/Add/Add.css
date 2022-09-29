@@ -1,0 +1,23 @@
+.backText {
+    font-weight: bold;
+}
+
+.buttonDonateDiv {
+    text-align: right;
+}
+
+.mainImageDetail {
+    border-radius: 30px;
+}
+
+.buttonDonateClass {
+    width: 250px !important;
+}
+
+.circularProgressDonateStatus {
+    margin-right: 120px;
+}
+
+.titleInfoDonateDiv {
+    padding-top: 0px !important;
+}

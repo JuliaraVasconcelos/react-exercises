@@ -1,0 +1,38 @@
+.ViewOptionDiv {
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+.ViewOptionSelect {
+    border: 1px solid red;
+    ;
+}
+
+.ViewOptionNotSelect {
+    border: 1px solid black;
+
+}
+
+.buttonClass {
+    width: 220px !important;
+}
+
+.toysTopButton {
+    text-align: right;
+}
+
+@media only screen and (max-width: 1000px) {
+    .toysTopButton {
+        text-align: center;
+    }
+
+    .stackViewInfo {
+        text-align: right;
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
+}

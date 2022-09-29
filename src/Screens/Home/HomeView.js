@@ -1,47 +1,57 @@
-import * as React from "react";
-import "./Home.css";
-import {
-    Box,
-    Container,
-    CircularProgress,
-    Grid,
-    Typography,
-    Button,
-} from "@mui/material";
-import ItemsView from "../../Components/ItemsView/ItemsView";
-import TopCards from "../../Components/TopCards/TopCards";
+import * as React from 'react';
+import './Home.css'
+import { Box, Container, Grid, Typography, Snackbar } from '@mui/material';
+import Header from '../../Components/Header/Header';
 
-export default function HomeView({ loading, arrayToys, goToPage }) {
-    let infoBox = [];
+import ToysTableView from '../../Components/ToysTableView/ToysTableView';
+import ToysCardsView from '../../Components/ToysCardsView/ToysCardsView';
+import ToysTopList from '../../Components/ToysTopList/ToysTopList';
+import renderIf from 'render-if';
+import ConfirmDialog from '../../Components/ConfirmDialog/ConfirmDialog';
 
-    if (loading) {
-        infoBox.push(
-            <Grid key={1} item lg={12} xl={12} className="itemClass">
-                <CircularProgress />
-            </Grid>
-        );
-    } else if (arrayToys) {
-        infoBox.push(
-            <ItemsView key={2} arrayToys={arrayToys} goToPage={goToPage} />
-        );
+export default function HomeView({ loading, arrayToys, goToPage, info, getDataPage, viewType, onChangeViewType, addToy,
+    onDeleteToy, isLoadingDelete, showAlertInfo, onCloseAlertInfo, messageInfo, showConfirmDeleteDialog, onHandleCloseDialog,
+    tableRef }) {
+
+    let isLoading = false;
+    if (loading || isLoadingDelete) {
+        isLoading = true;
     }
     return (
         <Container fixed className="container" maxWidth="lg">
+            <Header />
             <Box className="contentBox">
-                <Grid container spacing={3} alignItems="center">
-                    <Grid item md={6} lg={6} xl={6} className="titlePage">
-                        <Typography variant="h1">Base de Brinquedos</Typography>
+                <Grid
+                    container
+                    spacing={3}
+                    alignItems="center"
+                >
+                    <Grid item lg={12} xl={12} className="titlePage">
+                        <Typography variant="h1" >
+                            Base de Brinquedos - {info}
+                        </Typography>
                     </Grid>
-                    <Grid item md={6} lg={6} xl={6} className="titleButton">
-                        <Button variant="primary" className="buttonClass">
-                            Cadastrar brinquedo
-                        </Button>
+                    <ToysTopList onChangeView={onChangeViewType} viewType={viewType} addToy={addToy} />
+
+                    <Grid item lg={12} xl={12} sx={{ width: '100%' }} >
+                        {renderIf(viewType === "cards")(
+                            <ToysCardsView loading={isLoading} arrayToys={arrayToys} goToPage={goToPage} onDeleteToy={onDeleteToy} />
+                        )}
+                        {renderIf(viewType === "table")(
+                            <ToysTableView loading={isLoading} goToPage={goToPage} getDataPage={getDataPage} onDeleteToy={onDeleteToy} tableRef={tableRef} />
+                        )}
                     </Grid>
-                    <Grid item md={12} lg={12} xl={12} className="titleButton">
-                        <TopCards />
-                    </Grid>
-                    {infoBox}
                 </Grid>
+                <ConfirmDialog messageDialog={"Deseja remover o item?"} messageOption1={"Não"} messageOption2={"Sim"}
+                    onHandleClose={onHandleCloseDialog} open={showConfirmDeleteDialog} />
+                <Snackbar
+                    anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                    open={showAlertInfo}
+                    autoHideDuration={6000}
+                    onClose={onCloseAlertInfo}
+                >
+                    {messageInfo}
+                </Snackbar>
             </Box>
         </Container>
     );
